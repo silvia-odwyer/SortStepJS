@@ -10,11 +10,10 @@
     var next_item_index = -1;
     var iteration = 0;
     var drawInitialArrayID;
-    var acontext = new AudioContext();
     var sort_label;
     var bubbleSortID;
     var submit_count = 0;
-
+    var last_index;
 
     var item_array = []
     document.addEventListener('DOMContentLoaded', init, false);
@@ -51,6 +50,9 @@
         var sort_type = document.querySelector('#sort_type');
         sort_type_value = sort_type.value
         console.log(sort_type_value);
+        last_index = item_array.length - 2
+        console.log(last_index)
+
         if (sort_type_value === "bubble_sort"){
             sort_label.innerHTML = "Bubble Sort"
             clearInterval(drawInitialArrayID);
@@ -59,12 +61,12 @@
                 console.log("checking if submit count is bigger than zero" + submit_count)
                 clearInterval(bubbleSortID);
                 drawInitialArrayID = window.setInterval(drawInitialArray, 33);
-                bubbleSortID = window.setInterval(bubbleSort, 30);
+                bubbleSortID = window.setInterval(function(){bubbleSort(last_index, 300)});
             }
             else{
                 submit_count += 1;
                 console.log("checking if submit count is equal to zero" + submit_count)
-                bubbleSortID = window.setInterval(bubbleSort, 30);
+                bubbleSortID = window.setInterval(function(){bubbleSort(last_index, 300)});
             }
         }
         else if (sort_type_value === "selection_sort"){
@@ -78,7 +80,7 @@
                 console.log("checking if submit count is bigger than zero" + submit_count)
                 clearInterval(bubbleSortID);
                 drawInitialArrayID = window.setInterval(drawInitialArray, 33);
-                bubbleSortID = window.setInterval(bubbleSort, 30);
+                bubbleSortID = window.setInterval(function(){bubbleSort(last_index)}, 30);
             }
             else{
                 submit_count += 1;
@@ -94,8 +96,8 @@
         for (var i = 0; i < 35; i += 1){
             var item = {
                 x: x + 20,
-                y: 200,
-                length: getRandomNumber(2, 100),
+                y: 400,
+                length: getRandomNumber(2, 300),
                 color: "black"
             }
             x = x + 20;
@@ -104,7 +106,7 @@
         }
         for (var i = 0; i < 35; i += 1){
             var item = item_array[i];
-            item.color = getColor(item.length);
+                item.color = getColor(item.length);
             
         }
         return item_array;
@@ -114,7 +116,7 @@
         for (var i = 0; i < item_array.length - 1; i += 1){
             context.beginPath();
             context.strokeStyle = item_array[i].color;
-            context.lineWidth = 4;
+            context.lineWidth = 30;
             context.beginPath();
             context.moveTo(item_array[i].x, item_array[i].y);
             var endpoint = item_array[i].y - item_array[i].length;
@@ -123,13 +125,13 @@
         }
     }
 
-    function bubbleSort(){
+    function bubbleSort(last_index){
         context.clearRect(0, 0, width, height);
 
         for (var i = 0; i < item_array.length - 1; i += 1){
             context.beginPath();
             context.strokeStyle = item_array[i].color;
-            context.lineWidth = 4;
+            context.lineWidth = 30;
             context.beginPath();
             context.moveTo(item_array[i].x, item_array[i].y);
             var endpoint = item_array[i].y - item_array[i].length;
@@ -137,20 +139,22 @@
             context.stroke();
         }
 
-        if (current_item_index < item_array.length - 2){
+        if (current_item_index < last_index){
             current_item_index = current_item_index + 1;
             context.strokeStyle = "white";
-            context.lineWidth = 4;
+            context.lineWidth = 30;
             context.moveTo(item_array[current_item_index].x, item_array[current_item_index].y);
             var endpoint = item_array[current_item_index].y - item_array[current_item_index].length;
             context.lineTo(item_array[current_item_index].x, endpoint);
             context.stroke();
             
             // AUDIO 
-            var o = acontext.createOscillator()
+            var acontext = new AudioContext();
 
-            o.type = "sawtooth"
-            var frequency = item_array[current_item_index].length + 200;
+            var o = acontext.createOscillator();
+
+            o.type = "triangle";
+            var frequency = item_array[current_item_index].length;
             o.frequency.value = frequency
             o.connect(acontext.destination)
             o.start()
@@ -164,8 +168,10 @@
                 var temp_color = item_array[next_item_index].color
                 item_array[next_item_index].color = item_array[current_item_index].color;
                 item_array[current_item_index].color = temp_color;
-
+                last_index = last_index - 1
+                console.log(last_index)
             }
+
 
         }
         else if (iteration < item_array.length - 2){
@@ -174,7 +180,8 @@
             next_item_index = 0;
             console.log("iterator called.")
             console.log(item_array)
-
+            last_index = last_index - 1
+            console.log(last_index)
         }
         else {
      
@@ -189,7 +196,7 @@
         for (var i = 0; i < item_array.length - 1; i += 1){
             context.beginPath();
             context.strokeStyle = "black";
-            context.lineWidth = 7;
+            context.lineWidth = 12;
             context.beginPath();
             context.moveTo(item_array[i].x, item_array[i].y);
             var endpoint = item_array[i].y - item_array[i].length;
@@ -264,7 +271,7 @@
             html_element.style.color = "black"
             body_element.style.color = "black"
             nav_element.style.color = "black"
-            logo_element.style.color = "black"
+            logo_element.style.color = "green"
         }
     }
 

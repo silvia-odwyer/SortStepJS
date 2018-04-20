@@ -43,8 +43,8 @@ input{
     border: black solid 0.15em; 
     border-radius: 0.7em;
     padding: 1em;
-    padding-left: 3em;
-    padding-right: 3em;
+    padding-left: 1em;
+    padding-right: 1em;
     margin-top: 1em;
     list-style: none;
     cursor: pointer;
