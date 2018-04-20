@@ -43,7 +43,8 @@
        light_theme_button.addEventListener('click', function(){changeTheme("light")}, false);
        dark_theme_button.addEventListener('click', function(){changeTheme("dark")}, false);
 
-
+        var refresh_button = document.querySelector('#refresh');
+        refresh_button.addEventListener('click', reload, false)
     }
     function initializeSort(event, submit_count){
         event.preventDefault();
@@ -70,6 +71,20 @@
             sort_label.innerHTML = "Selection Sort"
             clearInterval(drawInitialArrayID);
             // window.setInterval(selectionSort, 30);
+
+            clearInterval(drawInitialArrayID);
+            if (submit_count > 0){
+                submit_count += 1;
+                console.log("checking if submit count is bigger than zero" + submit_count)
+                clearInterval(bubbleSortID);
+                drawInitialArrayID = window.setInterval(drawInitialArray, 33);
+                bubbleSortID = window.setInterval(bubbleSort, 30);
+            }
+            else{
+                submit_count += 1;
+                console.log("checking if submit count is equal to zero" + submit_count)
+                bubbleSortID = window.setInterval(bubbleSort, 30);
+            }
         }
 
     }
@@ -124,7 +139,7 @@
 
         if (current_item_index < item_array.length - 2){
             current_item_index = current_item_index + 1;
-            context.strokeStyle = "black";
+            context.strokeStyle = "white";
             context.lineWidth = 4;
             context.moveTo(item_array[current_item_index].x, item_array[current_item_index].y);
             var endpoint = item_array[current_item_index].y - item_array[current_item_index].length;
@@ -190,7 +205,7 @@
     function getColor(length){
         var color;
         console.log("Length is" + length);
-        if ((length < 10) && (length > 0)){
+        if (length < 10){
             color = "red";
         }
         else if (length < 20){
@@ -200,25 +215,25 @@
             color = "orange";
         }
         else if (length < 40){
-            color = "yellow";
+            color = "darkorange";
         }
         else if (length < 50){
-            color = "green";
+            color = "yellow";
         }
         else if (length < 60){
-            color = "lighcoral"
+            color = "limegreen"
         }
         else if (length < 70){
-            color = "blue"
+            color = "mediumseagreen"
         }
         else if (length < 80){
-            color = "hotpink"
+            color = "blue"
         }
         else if (length < 90){
-            color = "magenta"
+            color = "hotpink"
         }
         else if (length < 100){
-            color = "violet"
+            color = "magenta"
         }
 
         var colors = ['red', 'yellow', 'orange', 'lightcoral', 'orangered', 'green', 'blue', 'hotpink', 'blue'];
@@ -232,22 +247,29 @@
         console.log("changeTheme caled")
         var html_element = document.querySelector('html');
         var nav_element = document.querySelector('nav');
-        var h1_element = document.querySelectorAll('.logo')
+        var logo_element = document.querySelectorAll('.logo');
+        var canvas_element = document.querySelectorAll('canvas');
+
         if (theme === "dark"){
             html_element.style.backgroundColor = "black"
             html_element.style.color = "white"
             nav_element.style.color = "white"
-            h1_element.style.color = "white"
+            logo_element.style.color = "white"
+            canvas_element.style.borderColor = "white"
 
         }
 
         if (theme === "light"){
             html_element.style.backgroundColor = "white"
+            html_element.style.color = "black"
             body_element.style.color = "black"
             nav_element.style.color = "black"
-            h1_element.style.color = "black"
-
+            logo_element.style.color = "black"
         }
+    }
+
+    function reload(){
+        location.reload();
     }
 
 
