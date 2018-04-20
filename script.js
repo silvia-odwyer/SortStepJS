@@ -16,6 +16,9 @@
     var last_index;
 
     var item_array = []
+    item_array = getRandomArray();
+    last_index = item_array.length - 2
+
     document.addEventListener('DOMContentLoaded', init, false);
     
     function init(){
@@ -25,11 +28,10 @@
         height = canvas.height;
 
         var form = document.querySelector('form')
-        form.addEventListener('submit', function(){initializeSort(event, submit_count);}, false);
+        form.addEventListener('submit', function(){initializeSort(last_index, event, submit_count);}, false);
         // Initialize a list of bar objects and then get their corresponding x and y values, 
         // then push them onto the list. 
 
-        item_array = getRandomArray();
 
       
         console.log(item_array);
@@ -45,12 +47,11 @@
         var refresh_button = document.querySelector('#refresh');
         refresh_button.addEventListener('click', reload, false)
     }
-    function initializeSort(event, submit_count){
+    function initializeSort(last_index, event, submit_count){
         event.preventDefault();
         var sort_type = document.querySelector('#sort_type');
         sort_type_value = sort_type.value
         console.log(sort_type_value);
-        last_index = item_array.length - 2
         console.log(last_index)
 
         if (sort_type_value === "bubble_sort"){
@@ -126,8 +127,9 @@
     }
 
     function bubbleSort(last_index){
+        console.log("lastindex at start of function for bubblesort is " + last_index)
         context.clearRect(0, 0, width, height);
-
+        last_index = last_index - 1
         for (var i = 0; i < item_array.length - 1; i += 1){
             context.beginPath();
             context.strokeStyle = item_array[i].color;
@@ -138,15 +140,15 @@
             context.lineTo(item_array[i].x, endpoint);
             context.stroke();
         }
-
+        current_item_index = current_item_index + 1;
+        context.strokeStyle = "white";
+        context.lineWidth = 30;
+        context.moveTo(item_array[current_item_index].x, item_array[current_item_index].y);
+        var endpoint = item_array[current_item_index].y - item_array[current_item_index].length;
+        context.lineTo(item_array[current_item_index].x, endpoint);
+        context.stroke();
         if (current_item_index < last_index){
-            current_item_index = current_item_index + 1;
-            context.strokeStyle = "white";
-            context.lineWidth = 30;
-            context.moveTo(item_array[current_item_index].x, item_array[current_item_index].y);
-            var endpoint = item_array[current_item_index].y - item_array[current_item_index].length;
-            context.lineTo(item_array[current_item_index].x, endpoint);
-            context.stroke();
+            
             
             // AUDIO 
             var acontext = new AudioContext();
@@ -172,7 +174,6 @@
                 console.log(last_index)
             }
 
-
         }
         else if (iteration < item_array.length - 2){
             iteration += 1;
@@ -184,7 +185,7 @@
             console.log(last_index)
         }
         else {
-     
+            last_index = last_index - 1
         }
 
 
@@ -212,34 +213,43 @@
     function getColor(length){
         var color;
         console.log("Length is" + length);
-        if (length < 10){
+        if (length < 30){
             color = "red";
         }
-        else if (length < 20){
+        else if (length < 60){
             color = "orangered";
         }
-        else if (length < 30){
-            color = "orange";
-        }
-        else if (length < 40){
+        else if (length < 90){
             color = "darkorange";
         }
-        else if (length < 50){
+        else if (length < 120){
+            color = "orange";
+        }
+        else if (length < 150){
             color = "yellow";
         }
-        else if (length < 60){
+        else if (length < 180){
             color = "limegreen"
         }
-        else if (length < 70){
+        else if (length < 210){
             color = "mediumseagreen"
         }
-        else if (length < 80){
+        else if (length < 240){
             color = "blue"
         }
-        else if (length < 90){
+        else if (length < 270){
             color = "hotpink"
         }
-        else if (length < 100){
+        else if (length < 300){
+            color = "magenta"
+        }
+        else if (length < 330){
+            color = "violet"
+        }
+        else if (length < 240){
+            color = "lightcoral"
+        }
+        else if (length < 260){
             color = "magenta"
         }
 
