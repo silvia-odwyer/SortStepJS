@@ -13,7 +13,7 @@
     var sort_label;
     var bubbleSortID;
     var submit_count = 0;
-    var last_index;
+ 
 
     var item_array = []
     item_array = getRandomArray();
@@ -43,6 +43,7 @@
        var dark_theme_button = document.querySelector('#dark_theme');
        light_theme_button.addEventListener('click', function(){changeTheme("light")}, false);
        dark_theme_button.addEventListener('click', function(){changeTheme("dark")}, false);
+       dark_theme_button.addEventListener('hover', function(){changeTheme("dark")}, false);
 
         var refresh_button = document.querySelector('#refresh');
         refresh_button.addEventListener('click', reload, false)
@@ -130,6 +131,8 @@
         console.log("lastindex at start of function for bubblesort is " + last_index)
         context.clearRect(0, 0, width, height);
         last_index = last_index - 1
+        console.log(last_index)
+
         for (var i = 0; i < item_array.length - 1; i += 1){
             context.beginPath();
             context.strokeStyle = item_array[i].color;
@@ -187,6 +190,8 @@
         else {
             last_index = last_index - 1
         }
+
+        console.log("lastindex at the end is " + last_index)
 
 
 
@@ -264,15 +269,34 @@
         console.log("changeTheme caled")
         var html_element = document.querySelector('html');
         var nav_element = document.querySelector('nav');
-        var logo_element = document.querySelectorAll('.logo');
-        var canvas_element = document.querySelectorAll('canvas');
+        var logo_element = document.querySelector('#logo');
+        var body_element = document.querySelector('body');
+        var aside_element = document.querySelector('aside');
+
+        var canvas_element = document.querySelector('canvas');
+
+        var reload_element = document.querySelector('#refresh');
+        var dark_theme_element = document.querySelector('#dark_theme');
+        var white_theme_element = document.querySelector('#white_theme');
+
 
         if (theme === "dark"){
-            html_element.style.backgroundColor = "black"
-            html_element.style.color = "white"
-            nav_element.style.color = "white"
-            logo_element.style.color = "white"
-            canvas_element.style.borderColor = "white"
+            html_element.style.backgroundColor = "black";
+            html_element.style.color = "white";
+            nav_element.style.color = "white";
+            body_element.style.color = "white"
+
+            logo_element.style.color = "green";
+            logo_element.style.fontFamily = "Lucida Console";
+
+            canvas_element.style.borderColor = "white";
+            aside_element.style.borderColor = "white";
+            aside_element.style.color = "white";
+
+            reload_element.style.color = "white";
+            dark_theme_element.style.borderColor = "white";
+            white_theme_element.style.borderColor = "white";
+
 
         }
 
@@ -282,6 +306,14 @@
             body_element.style.color = "black"
             nav_element.style.color = "black"
             logo_element.style.color = "green"
+            canvas_element.style.borderColor = "black";
+            logo_element.style.color = "black";
+            aside_element.style.borderColor = "black";
+
+            reload_element.style.borderColor = "black";
+            dark_theme_element.style.borderColor = "black";
+            white_theme_element.style.borderColor = "black";
+
         }
     }
 

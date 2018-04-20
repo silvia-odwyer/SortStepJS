@@ -241,6 +241,7 @@ nav ul li {
   padding: 0.2em;
 }
 
+
 .tech-pane h1 {
     color: green;
 }
@@ -263,7 +264,7 @@ article a, nav a {
     /* box-shadow: 8px 8px 8px 8px #202225; */
 }
 
-nav a:hover {
+nav a:hover, li:hover, #submit:hover {
     color: darkblue;
 }
 
