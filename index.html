@@ -2,7 +2,7 @@
 
 <html lang="en">
 	<head>
-		<title>SortingAlgorithmsJS</title>
+		<title>SortStepJS</title>
 		<meta charset="utf-8" />
 		<link rel="stylesheet" href="styles-light.css" />
 		<link rel="icon" href="bubbles4.ico" />
@@ -20,14 +20,14 @@
 
 	<body>
 		<header>
-			<h1 class="chatCryptLogo">SortingAlgorithmsJS.</h1>
+			<h1 id="logo">SortStepJS</h1>
 		</header>
 		
 
 
 		<main>
 
-            <canvas width="750" height="400">
+            <canvas width="760" height="400">
                 <p id="sort_label"></p>
             </canvas>
 
@@ -36,6 +36,7 @@
 		
 		
 		<aside>
+			<p>Select a sorting algorithm:</p>
 				<form action="hello.js" method="get">
 					<select name="sort_type" id="sort_type">
 						<option value="bubble_sort">Bubble Sort</option>
@@ -43,6 +44,9 @@
 					</select>
 					<input type="submit" id="submit" value="Sort!"/>
 				</form>
+				<li id="dark_theme">Dark Theme</li>
+				<li id="light_theme">Light Theme</li>
+
 			</aside>
 		<footer>
 			<p>
