@@ -7,6 +7,7 @@
 		<link rel="stylesheet" href="styles-light.css" />
 		<link rel="icon" href="bubbles4.ico" />
 		<script src="script.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/pizzicato/0.6.3/Pizzicato.js"></script>
 		<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' />
 	</head>
 
@@ -36,24 +37,27 @@
 		
 		
 		<aside>
-			<p>Select a sorting algorithm:</p>
+			<p id="instruction1">Select a sorting algorithm:</p>
 				<form action="index.html" method="get">
 					<select name="sort_type" id="sort_type">
 						<option value="bubble_sort">Bubble Sort</option>
 						<!-- <option value="selection_sort">Selection Sort</option> -->
 					</select>
 					<input type="submit" id="submit" value="Sort!"/>
+
 				</form>
-				<li id="dark_theme" >Dark Theme</li>
+
+				<section id="menu"/>
+				<li id="inc_speed">FASTER!</li>
+
+				<li id="dark_theme">Dark Theme</li>
 				<li id="light_theme">Light Theme</li>
 				<li id="refresh" href="index.html">Generate New Array</li>
-
+				<section>
 
 			</aside>
 		<footer>
-			<p>
 				<small> &copy; Silvia O'Dwyer. All rights reserved. </small>
-			</p>
 		</footer>
 	</body>
 </html>

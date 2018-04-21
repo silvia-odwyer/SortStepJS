@@ -13,7 +13,7 @@
     var sort_label;
     var bubbleSortID;
     var submit_count = 0;
- 
+    var counter = 0;
 
     var item_array = []
     item_array = getRandomArray();
@@ -31,6 +31,9 @@
         form.addEventListener('submit', function(){initializeSort(last_index, event, submit_count);}, false);
         // Initialize a list of bar objects and then get their corresponding x and y values, 
         // then push them onto the list. 
+
+        var inc_speed_button = document.querySelector('#inc_speed');
+        inc_speed_button.addEventListener('click', function(){initializeSort(last_index, event, submit_count);}, false);
 
 
       
@@ -128,6 +131,7 @@
     }
 
     function bubbleSort(last_index){
+        counter += 1
         console.log("lastindex at start of function for bubblesort is " + last_index)
         context.clearRect(0, 0, width, height);
         last_index = last_index - 1
@@ -162,7 +166,9 @@
             var frequency = item_array[current_item_index].length;
             o.frequency.value = frequency
             o.connect(acontext.destination)
-            o.start()
+
+            playSound()
+                            
 
             next_item_index = current_item_index + 1;
             if (item_array[next_item_index].length < item_array[current_item_index].length){
@@ -277,7 +283,8 @@
 
         var reload_element = document.querySelector('#refresh');
         var dark_theme_element = document.querySelector('#dark_theme');
-        var white_theme_element = document.querySelector('#white_theme');
+        var white_theme_element = document.querySelector('#light_theme');
+        var instruction_element = document.querySelector('#instruction1');
 
 
         if (theme === "dark"){
@@ -297,6 +304,8 @@
             dark_theme_element.style.borderColor = "white";
             white_theme_element.style.borderColor = "white";
 
+            instruction_element.style.color = "white";
+            instruction_element.style.color = "white";
 
         }
 
@@ -313,6 +322,7 @@
             reload_element.style.borderColor = "black";
             dark_theme_element.style.borderColor = "black";
             white_theme_element.style.borderColor = "black";
+            instruction_element.style.color = "black";
 
         }
     }
@@ -321,5 +331,23 @@
         location.reload();
     }
 
+    function playSound(){
+        var sineWave;
+        console.log(counter)
+        if (counter == 1){
+            var sineWave = new Pizzicato.Sound({ 
+            source: 'wave', 
+            options: {
+                frequency: getRandomNumber(200, 450)
+            }
+        });
+    
+    }
 
+    else{
+        sineWave.frequency = getRandomNumber(200, 450)
+    }
+
+    sineWave.play();
+}
 })();
