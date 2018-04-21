@@ -63,13 +63,13 @@
                 clearInterval(bubbleSortID);
                 drawInitialArrayID = window.setInterval(drawInitialArray, 33);
                 for (var i = 0; i < item_array.length - 1; i += 1){
-                    bubbleSortID = window.setInterval(function(){bubbleSort(last_index)}, 2000);
+                    bubbleSortID = window.setInterval(function(){bubbleSort(last_index)}, 600);
                 }
             }
             else{
                 submit_count += 1;
                 console.log("checking if submit count is equal to zero" + submit_count)
-                bubbleSortID = window.setInterval(function(){bubbleSort(last_index)}, 90);
+                bubbleSortID = window.setInterval(function(){bubbleSort(last_index)}, 100);
 
             }
         }
@@ -105,7 +105,8 @@
                 x: x + 20,
                 y: 400,
                 length: getRandomNumber(2, 300),
-                color: "black"
+                color: "black",
+                soundfile: "01.mp3"
             }
             x = x + 20;
             item_array.push(item);
@@ -113,9 +114,12 @@
         }
         for (var i = 0; i < 35; i += 1){
             var item = item_array[i];
-                item.color = getColor(item.length);
+            var colorAndSoundfile = getColor(item.length);
+            item.color = colorAndSoundfile[1]
+            item.soundfile = colorAndSoundfile[0]
             
         }
+
         return item_array;
     }
     function drawInitialArray(){
@@ -178,10 +182,11 @@
                                 // o.start()
                                 // o.stop(acontext.currentTime + 0.047)
                                 // console.log("Playing sound")
-                                var sound_array = ["beep.wav", "beep2.wav", "beep3.wav", "beep4.wav"]
-                                var randomNumber = getRandomNumber(0, sound_array.length - 1)
-                                var soundfile = sound_array[randomNumber]
-                                var audio = new Audio(soundfile);
+                                
+                                var soundfile = item_array[next_item_index].soundfile;
+                                var soundfile_url = "FX/" + soundfile
+                                var audio = new Audio(soundfile_url);
+                                console.log("Playing the sound FKT" + soundfile_url)
                                 audio.play();
 
             if (item_array[next_item_index].length < item_array[current_item_index].length){
@@ -194,6 +199,10 @@
                 item_array[current_item_index].color = temp_color;
                 last_index = last_index - 1
                 console.log(last_index)
+
+                var temp_soundfile = item_array[next_item_index].soundfile
+                item_array[next_item_index].soundfile = item_array[current_item_index].soundfile;
+                item_array[current_item_index].soundfile = temp_soundfile;
 
             }
 
@@ -236,53 +245,92 @@
 
     function getColor(length){
         var color;
+        var soundfile;
         console.log("Length is" + length);
         if (length < 30){
             color = "red";
+            soundfile = "50HZ.wav"
+        }
+        //if (length < 45){
+            color = "red";
+            soundfile = "50HZ.wav"
         }
         else if (length < 60){
             color = "orangered";
+            soundfile = "100HZ.wav"
+
         }
         else if (length < 90){
             color = "darkorange";
+            soundfile = "150HZ.wav"
+
         }
         else if (length < 120){
             color = "orange";
+            soundfile = "170HZ.wav"
+
+        }
+        else if (length < 135){
+            color = "gold";
+            soundfile = "200HZ.wav"
+
         }
         else if (length < 150){
             color = "yellow";
+            soundfile = "200HZ.wav"
+
         }
         else if (length < 180){
             color = "limegreen"
+            soundfile = "320HZ.wav"
+
         }
         else if (length < 210){
             color = "mediumseagreen"
+            soundfile = "350HZ.wav"
+
         }
         else if (length < 240){
             color = "blue"
+            soundfile = "410HZ.wav"
+
         }
         else if (length < 270){
             color = "hotpink"
+            soundfile = "470HZ.wav"
+
         }
         else if (length < 300){
             color = "magenta"
+            soundfile = "500HZ.wav"
+
         }
         else if (length < 330){
             color = "violet"
+            soundfile = "560HZ.wav"
+
         }
         else if (length < 240){
             color = "lightcoral"
+            soundfile = "590HZ.wav"
+
         }
         else if (length < 260){
             color = "magenta"
+            soundfile = "660HZ.wav"
+
         }
 
         var colors = ['red', 'yellow', 'orange', 'lightcoral', 'orangered', 'green', 'blue', 'hotpink', 'blue'];
-
+        console.log(color, soundfile)
         // var randomNumber = getRandomNumber(0, colors.length - 1);
         // var randomColor = colors[randomNumber];
-        return color
+        return [soundfile, color]
     }
+
+    
+
+
     function sleep(ms) {
         return new Promise(resolve => setTimeout(resolve, ms));
       }
