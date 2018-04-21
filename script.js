@@ -104,7 +104,7 @@
             var item = {
                 x: x + 20,
                 y: 400,
-                length: getRandomNumber(2, 300),
+                length: getRandomNumber(2, 360),
                 color: "black",
                 soundfile: "01.mp3"
             }
@@ -248,76 +248,115 @@
         var soundfile;
         console.log("Length is" + length);
         if (length < 30){
-            color = "red";
-            soundfile = "50HZ.wav"
+            color = "darkred";
+            soundfile = "100HZ.wav"
         }
-        //if (length < 45){
-            color = "red";
-            soundfile = "50HZ.wav"
+        else if (length < 45){
+            color = "firebrick";
+            soundfile = "120HZ.wav"
         }
         else if (length < 60){
-            color = "orangered";
-            soundfile = "100HZ.wav"
+            color = "red";
+            soundfile = "135HZ.wav"
 
+        }
+        else if (length < 75){
+            color = "orangered";
+            soundfile = "150HZ.wav"
         }
         else if (length < 90){
             color = "darkorange";
-            soundfile = "150HZ.wav"
+            soundfile = "170HZ.wav"
+
+        }
+        else if (length < 105){
+            color = "coral";
+            soundfile = "185HZ.wav"
 
         }
         else if (length < 120){
             color = "orange";
-            soundfile = "170HZ.wav"
+            soundfile = "200HZ.wav"
 
         }
         else if (length < 135){
             color = "gold";
-            soundfile = "200HZ.wav"
+            soundfile = "230HZ.wav"
 
         }
         else if (length < 150){
             color = "yellow";
-            soundfile = "200HZ.wav"
+            soundfile = "260HZ.wav"
+
+        }
+        else if (length < 165){
+            color = "greenyellow";
+            soundfile = "290HZ.wav"
 
         }
         else if (length < 180){
-            color = "limegreen"
+            color = "chartreuse"
             soundfile = "320HZ.wav"
 
         }
-        else if (length < 210){
-            color = "mediumseagreen"
+        else if (length < 195){
+            color = "limegreen"
             soundfile = "350HZ.wav"
 
         }
-        else if (length < 240){
-            color = "blue"
+        else if (length < 210){
+            color = "lawngreen"
+            soundfile = "380HZ.wav"
+
+        }
+        else if (length < 225){
+            color = "mediumspringgreen"
             soundfile = "410HZ.wav"
 
         }
-        else if (length < 270){
+        else if (length < 240){
+            color = "mediumseagreen"
+            soundfile = "440HZ.wav"
+
+        }
+        else if (length < 255){
+            color = "blue"
+            soundfile = "450HZ.wav"
+
+        }
+        else if (length < 265){
+            color = "dodgerblue"
+            soundfile = "460HZ.wav"
+
+        }
+        else if (length < 275){
+            color = "deepskyblue"
+            soundfile = "480HZ.wav"
+
+        }
+        else if (length < 285){
             color = "hotpink"
-            soundfile = "470HZ.wav"
+            soundfile = "490HZ.wav"
 
         }
         else if (length < 300){
             color = "magenta"
-            soundfile = "500HZ.wav"
+            soundfile = "510HZ.wav"
 
         }
         else if (length < 330){
             color = "violet"
-            soundfile = "560HZ.wav"
+            soundfile = "520HZ.wav"
 
         }
-        else if (length < 240){
-            color = "lightcoral"
-            soundfile = "590HZ.wav"
+        else if (length < 345){
+            color = "slateblue"
+            soundfile = "540HZ.wav"
 
         }
-        else if (length < 260){
-            color = "magenta"
-            soundfile = "660HZ.wav"
+        else if (length < 360){
+            color = "blueviolet"
+            soundfile = "550HZ.wav"
 
         }
 
@@ -327,7 +366,118 @@
         // var randomColor = colors[randomNumber];
         return [soundfile, color]
     }
+    // if (length < 30){
+    //     color = "darkred";
+    //     soundfile = "261.63HZ.wav"
+    // }
+    // else if (length < 45){
+    //     color = "firebrick";
+    //     soundfile = "277.18HZ.wav"
+    // }
+    // else if (length < 60){
+    //     color = "red";
+    //     soundfile = "293.66HZ.wav"
 
+    // }
+    // else if (length < 75){
+    //     color = "orangered";
+    //     soundfile = "311.13HZ.wav"
+    // }
+    // else if (length < 90){
+    //     color = "darkorange";
+    //     soundfile = "329.63HZ.wav"
+
+    // }
+    // else if (length < 105){
+    //     color = "coral";
+    //     soundfile = "349.23.wav"
+
+    // }
+    // else if (length < 120){
+    //     color = "orange";
+    //     soundfile = "369.99.wav"
+
+    // }
+    // else if (length < 135){
+    //     color = "gold";
+    //     soundfile = "392HZ.wav"
+
+    // }
+    // else if (length < 150){
+    //     color = "yellow";
+    //     soundfile = "415.3HZ.wav"
+
+    // }
+    // else if (length < 165){
+    //     color = "greenyellow";
+    //     soundfile = "440.00HZ.wav"
+
+    // }
+    // else if (length < 180){
+    //     color = "chartreuse"
+    //     soundfile = "466.16HZ.wav"
+
+    // }
+    // else if (length < 195){
+    //     color = "limegreen"
+    //     soundfile = "493.88HZ.wav"
+
+    // }
+    // else if (length < 210){
+    //     color = "lawngreen"
+    //     soundfile = "523.25HZ.wav"
+
+    // }
+    // else if (length < 225){
+    //     color = "mediumspringgreen"
+    //     soundfile = "HZ.wav"
+
+    // }
+    // else if (length < 240){
+    //     color = "mediumseagreen"
+    //     soundfile = "440HZ.wav"
+
+    // }
+    // else if (length < 255){
+    //     color = "blue"
+    //     soundfile = "450HZ.wav"
+
+    // }
+    // else if (length < 265){
+    //     color = "dodgerblue"
+    //     soundfile = "460HZ.wav"
+
+    // }
+    // else if (length < 275){
+    //     color = "deepskyblue"
+    //     soundfile = "480HZ.wav"
+
+    // }
+    // else if (length < 285){
+    //     color = "hotpink"
+    //     soundfile = "490HZ.wav"
+
+    // }
+    // else if (length < 300){
+    //     color = "magenta"
+    //     soundfile = "510HZ.wav"
+
+    // }
+    // else if (length < 330){
+    //     color = "violet"
+    //     soundfile = "520HZ.wav"
+
+    // }
+    // else if (length < 345){
+    //     color = "slateblue"
+    //     soundfile = "540HZ.wav"
+
+    // }
+    // else if (length < 360){
+    //     color = "blueviolet"
+    //     soundfile = "550HZ.wav"
+
+    // }
     
 
 
