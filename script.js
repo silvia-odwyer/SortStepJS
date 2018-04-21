@@ -62,33 +62,39 @@
                 console.log("checking if submit count is bigger than zero" + submit_count)
                 clearInterval(bubbleSortID);
                 drawInitialArrayID = window.setInterval(drawInitialArray, 33);
-                bubbleSortID = window.setInterval(function(){bubbleSort(last_index)}, 500);
+                for (var i = 0; i < item_array.length - 1; i += 1){
+                    bubbleSortID = window.setInterval(function(){bubbleSort(last_index)}, 2000);
+                }
             }
             else{
                 submit_count += 1;
                 console.log("checking if submit count is equal to zero" + submit_count)
-                bubbleSortID = window.setInterval(function(){bubbleSort(last_index)}, 500);
-            }
-        }
-        else if (sort_type_value === "selection_sort"){
-            sort_label.innerHTML = "Selection Sort"
-            clearInterval(drawInitialArrayID);
-            // window.setInterval(selectionSort, 30);
+                bubbleSortID = window.setInterval(function(){bubbleSort(last_index)}, 90);
 
-            clearInterval(drawInitialArrayID);
-            if (submit_count > 0){
-                submit_count += 1;
-                console.log("checking if submit count is bigger than zero" + submit_count)
-                clearInterval(bubbleSortID);
-                drawInitialArrayID = window.setInterval(drawInitialArray, 33);
-                bubbleSortID = window.setInterval(function(){bubbleSort(last_index)}, 1000);
-            }
-            else{
-                submit_count += 1;
-                console.log("checking if submit count is equal to zero" + submit_count)
-                bubbleSortID = window.setInterval(bubbleSort, 1000);
             }
         }
+        // else if (sort_type_value === "selection_sort"){
+        //     sort_label.innerHTML = "Selection Sort"
+        //     clearInterval(drawInitialArrayID);
+        //     // window.setInterval(selectionSort, 30);
+
+        //     clearInterval(drawInitialArrayID);
+        //     if (submit_count > 0){
+        //         submit_count += 1;
+        //         console.log("checking if submit count is bigger than zero" + submit_count)
+        //         clearInterval(bubbleSortID);
+        //         drawInitialArrayID = window.setInterval(drawInitialArray, 33);
+        //         bubbleSortID = window.setInterval(function(){bubbleSort(last_index)}, 1000);
+        //     }
+        //     else{
+        //         submit_count += 1;
+        //         console.log("checking if submit count is equal to zero" + submit_count)
+        //         for (var i = 0; i < item_array.length; i += 1){
+        //             bubbleSortID = window.setTimeout(bubbleSort, 1000);
+        //             window.setTimeout(timeSleep, 2000);
+        //         }
+        //     }
+        // }
 
     }
 
@@ -160,19 +166,24 @@
 
             next_item_index = current_item_index + 1;
                                 // AUDIO 
-                                var acontext = new AudioContext();
+                                // var acontext = new AudioContext();
 
-                                var o = acontext.createOscillator();
+                                // var o = acontext.createOscillator();
                     
-                                o.type = "sine";
-                                var frequency = item_array[next_item_index].length;
-                                console.log("freq" + frequency)
-                                o.frequency.value = frequency
-                                o.connect(acontext.destination)
-                                o.start(acontext.currentTime)
-                                o.stop(acontext.currentTime + 0.2)
-                                console.log("Playing sound")
-            
+                                // o.type = "sine";
+                                // var frequency = item_array[next_item_index].length + 200;
+                                // console.log("freq" + frequency)
+                                // o.frequency.value = frequency
+                                // o.connect(acontext.destination)
+                                // o.start()
+                                // o.stop(acontext.currentTime + 0.047)
+                                // console.log("Playing sound")
+                                var sound_array = ["beep.wav", "beep2.wav", "beep3.wav", "beep4.wav"]
+                                var randomNumber = getRandomNumber(0, sound_array.length - 1)
+                                var soundfile = sound_array[randomNumber]
+                                var audio = new Audio(soundfile);
+                                audio.play();
+
             if (item_array[next_item_index].length < item_array[current_item_index].length){
                 var temp = item_array[next_item_index].length
                 item_array[next_item_index].length = item_array[current_item_index].length;
@@ -183,6 +194,7 @@
                 item_array[current_item_index].color = temp_color;
                 last_index = last_index - 1
                 console.log(last_index)
+
             }
 
         }
@@ -194,21 +206,16 @@
             console.log(item_array)
             last_index = last_index - 1
             console.log(last_index)
+            window.setTimeout(function(){timeSleep}, 20000)
         }
         else {
             last_index = last_index - 1
         }
 
-        setTimeout(timeSleep, 100)
+        window.setTimeout(function(){timeSleep}, 20000)
 
-        
     }
 
-    function timeSleep(){
-        for (var i = 0; i < 100000; i += 1){
-            var e = 3 + 1;
-        }
-    }
 
     function iterateArray(){
         for (var i = 0; i < item_array.length - 1; i += 1){
@@ -276,6 +283,15 @@
         // var randomColor = colors[randomNumber];
         return color
     }
+    function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+      }
+      
+      async function timeSleep() {
+        console.log('Taking a break...');
+        await sleep(2000);
+        console.log('Two second later');
+      }
 
     function changeTheme(theme){
         console.log("changeTheme caled")
