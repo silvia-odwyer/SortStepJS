@@ -491,34 +491,84 @@
         console.log('Two second later');
       }
 
-    function changeTheme(theme){
+      function changeTheme(theme){
         console.log("changeTheme caled")
+        var soundfile1;
         var html_element = document.querySelector('html');
         var nav_element = document.querySelector('nav');
-        var logo_element = document.querySelectorAll('.logo');
-        var canvas_element = document.querySelectorAll('canvas');
+        var logo_element = document.querySelector('#logo');
+        var body_element = document.querySelector('body');
+        var aside_element = document.querySelector('aside');
+
+        var canvas_element = document.querySelector('canvas');
+
+        var reload_element = document.querySelector('#refresh');
+        var dark_theme_element = document.querySelector('#dark_theme');
+        var white_theme_element = document.querySelector('#light_theme');
+
 
         if (theme === "dark"){
-            html_element.style.backgroundColor = "black"
-            html_element.style.color = "white"
-            nav_element.style.color = "white"
-            logo_element.style.color = "white"
-            canvas_element.style.borderColor = "white"
+            soundfile1 = "beep.wav"
+            html_element.style.backgroundColor = "black";
+            html_element.style.color = "white";
+            nav_element.style.color = "white";
+            body_element.style.color = "white"
+
+            logo_element.style.color = "green";
+            logo_element.style.fontFamily = "Lucida Console";
+
+            canvas_element.style.borderColor = "white";
+            aside_element.style.borderColor = "white";
+            aside_element.style.color = "white";
+
+            reload_element.style.color = "white";
+            dark_theme_element.style.borderColor = "white";
+            white_theme_element.style.borderColor = "white";
+            reload_element.style.borderColor = "white";
+            dark_theme_element.style.color = "white";
+            white_theme_element.style.color = "white";
+
 
         }
 
-        if (theme === "light"){
+        else if (theme === "light"){
+            soundfile1 = "beep2.wav"
+
             html_element.style.backgroundColor = "white"
             html_element.style.color = "black"
             body_element.style.color = "black"
             nav_element.style.color = "black"
             logo_element.style.color = "green"
+            canvas_element.style.borderColor = "black";
+            logo_element.style.color = "black";
+            aside_element.style.borderColor = "black";
+
+            reload_element.style.borderColor = "black";
+            dark_theme_element.style.borderColor = "black";
+            white_theme_element.style.borderColor = "black";
+
+            reload_element.style.color = "black";
+            dark_theme_element.style.color = "black";
+            white_theme_element.style.color = "black";
+
         }
+
+
+        var soundfile_url = "FX/" + soundfile1;
+        var audio1 = new Audio(soundfile_url);
+        console.log("Playing the sound FKT" + soundfile_url)
+        audio1.play();
     }
 
     function reload(){
+        var reload_sound = "beep3.wav"
+        // CAN TURN THE BELOW INTO A FUNCTION LATER
+        var soundfile_url = "FX/" + reload_sound;
+        var audio2 = new Audio(soundfile_url);
+        console.log("Playing the sound FKT" + reload_sound)
+        audio2.play();
         location.reload();
-    }
 
+    }
 
 })();

@@ -58,9 +58,9 @@ form{
     padding-bottom: 0.5em;
 }
 #menu{
-    display: flex;
+    /* display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
+    flex-wrap: wrap; */
     border-top: solid black 0.1em;
 }
 header img {
@@ -90,7 +90,7 @@ html {
 }
 
 p {
-  font-family: 'Titillium-Regular', sans-serif
+  font-family: 'Titillium-Regular', sans-serif;
 }
 
 body {
@@ -132,9 +132,8 @@ aside img {
 }
 
 li {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
+    display: block;
+
 }
 
 h1 {
