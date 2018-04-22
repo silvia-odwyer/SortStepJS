@@ -57,19 +57,20 @@
         if (sort_type_value === "bubble_sort"){
             sort_label.innerHTML = "Bubble Sort"
             clearInterval(drawInitialArrayID);
+            var asc_or_desc_option = "asc"
             if (submit_count > 0){
                 submit_count += 1;
                 console.log("checking if submit count is bigger than zero" + submit_count)
                 clearInterval(bubbleSortID);
                 drawInitialArrayID = window.setInterval(drawInitialArray, 33);
                 for (var i = 0; i < item_array.length - 1; i += 1){
-                    bubbleSortID = window.setInterval(function(){bubbleSort(last_index)}, 600);
+                    bubbleSortID = window.setInterval(function(){bubbleSort(last_index, asc_or_desc_option)}, 600);
                 }
             }
             else{
                 submit_count += 1;
                 console.log("checking if submit count is equal to zero" + submit_count)
-                bubbleSortID = window.setInterval(function(){bubbleSort(last_index)}, 100);
+                bubbleSortID = window.setInterval(function(){bubbleSort(last_index, asc_or_desc_option)}, 100);
 
             }
         }
@@ -136,7 +137,7 @@
         }
     }
 
-    function bubbleSort(last_index){
+    function bubbleSort(last_index, ascOrDesc){
         console.log("lastindex at start of function for bubblesort is " + last_index)
         context.clearRect(0, 0, width, height);
         last_index = last_index - 1
@@ -151,12 +152,8 @@
             context.stroke();
         }
                     
-            
-
         current_item_index = current_item_index + 1;
         console.log("current item index" + current_item_index)
-
-
 
 
         context.strokeStyle = "white";
@@ -183,29 +180,51 @@
                                 // o.stop(acontext.currentTime + 0.047)
                                 // console.log("Playing sound")
                                 
-                                var soundfile = item_array[next_item_index].soundfile;
-                                var soundfile_url = "FX/" + soundfile
-                                var audio = new Audio(soundfile_url);
-                                console.log("Playing the sound FKT" + soundfile_url)
-                                audio.play();
-
-            if (item_array[next_item_index].length < item_array[current_item_index].length){
-                var temp = item_array[next_item_index].length
-                item_array[next_item_index].length = item_array[current_item_index].length;
-                item_array[current_item_index].length = temp;
-
-                var temp_color = item_array[next_item_index].color
-                item_array[next_item_index].color = item_array[current_item_index].color;
-                item_array[current_item_index].color = temp_color;
-                last_index = last_index - 1
-                console.log(last_index)
-
-                var temp_soundfile = item_array[next_item_index].soundfile
-                item_array[next_item_index].soundfile = item_array[current_item_index].soundfile;
-                item_array[current_item_index].soundfile = temp_soundfile;
-
+                                // var soundfile = item_array[next_item_index].soundfile;
+                                // var soundfile_url = "FX/" + soundfile
+                                // var audio = new Audio(soundfile_url);
+                                // console.log("Playing the sound FKT" + soundfile_url)
+                                // audio.play();
+                                
+            if (ascOrDesc = "asc"){
+                if (item_array[next_item_index].length < item_array[current_item_index].length){
+                    var temp = item_array[next_item_index].length
+                    item_array[next_item_index].length = item_array[current_item_index].length;
+                    item_array[current_item_index].length = temp;
+    
+                    var temp_color = item_array[next_item_index].color
+                    item_array[next_item_index].color = item_array[current_item_index].color;
+                    item_array[current_item_index].color = temp_color;
+                    last_index = last_index - 1
+                    console.log(last_index)
+    
+                    var temp_soundfile = item_array[next_item_index].soundfile
+                    item_array[next_item_index].soundfile = item_array[current_item_index].soundfile;
+                    item_array[current_item_index].soundfile = temp_soundfile;
+    
+                }
+    
             }
-
+            else if (ascOrDesc == "desc"){
+                if (item_array[next_item_index].length > item_array[current_item_index].length){
+                    var temp = item_array[next_item_index].length
+                    item_array[next_item_index].length = item_array[current_item_index].length;
+                    item_array[current_item_index].length = temp;
+    
+                    var temp_color = item_array[next_item_index].color
+                    item_array[next_item_index].color = item_array[current_item_index].color;
+                    item_array[current_item_index].color = temp_color;
+                    last_index = last_index - 1
+                    console.log(last_index)
+    
+                    var temp_soundfile = item_array[next_item_index].soundfile
+                    item_array[next_item_index].soundfile = item_array[current_item_index].soundfile;
+                    item_array[current_item_index].soundfile = temp_soundfile;
+    
+                }
+    
+            }
+           
         }
         else if (iteration < item_array.length - 2){
             iteration += 1;
