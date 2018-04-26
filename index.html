@@ -28,7 +28,7 @@
 
 		<main>
 
-            <canvas width="670" height="400">
+            <canvas width="700" height="600">
                 <p id="sort_label"></p>
             </canvas>
 
@@ -37,12 +37,17 @@
 		
 		
 		<aside>
-			<p id="instruction1">Select a sorting algorithm:</p>
+			<p id="instruction1">Select a sorting algorithm and speed. As it's sorting, to make it iterate faster, just click "Sort" repeatedly. 
+				However, the noise will get distorted, so for optimal sound, click Sort once. XD</p>
 				<form action="index.html" method="get">
 					<select name="sort_type" id="sort_type">
 						<option value="bubble_sort">Bubble Sort</option>
 						<!-- <option value="selection_sort">Selection Sort</option> -->
 					</select>
+					<!-- <select name="array_length" id="array_length">
+						<option value="hundred">100</option>
+						<option value="fifty">50</option>
+					</select>	 -->
 					<input type="submit" id="submit" value="Sort!"/>
 
 				</form>
@@ -51,7 +56,7 @@
 				<li id="dark_theme">Dark Theme</li>
 				<li id="light_theme">Light Theme</li>
 				<li id="refresh" href="index.html">Generate New Array</li>
-				<section>
+			</section>
 
 			</aside>
 		<footer>
