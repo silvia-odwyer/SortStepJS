@@ -2,14 +2,12 @@
 A JS web app that visualizes sorting algorithms, by sorting an array in real-time. It also plays sound as it's sorting, 
 according to the item it's currently on.
 
+## Try It Out
+Just go to www.cs1.ucc.ie/~sod8/sortstepjs and start sorting!
+At the moment, it has one sorting algorithm, but I intend to add many more (once my end-of-term exams are out of the way).
+
 ## Why SortStepJS?
 SortStep is a genre of music created by the auditory result of sorting algorithms. 
-It's pretty sweeeeeeeeet to hear. 
-
-## Try It Out
-Go to: 
-
-![The 9font command in action](https://github.com/silvia-odwyer/NiN3Bot/blob/master/font-commands.PNG)
 
 ## Developments Coming Soon
 - More sorting algorithms coming soon!
