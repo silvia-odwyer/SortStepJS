@@ -3,7 +3,7 @@ A JS web app that visualizes sorting algorithms, by sorting an array in real-tim
 according to the item it's currently on.
 
 ## Try It Out
-Just go to https://github.com/silvia-odwyer/SortStepJS and start sorting!
+Just go to https://cs1.ucc.ie/~sod8/SortStepJS/ and start sorting!
 At the moment, it has one sorting algorithm, but I intend to add many more (once my end-of-term exams are out of the way).
 
 ## Why SortStepJS?
